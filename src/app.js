@@ -5,6 +5,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import { notFoundHandler } from "./middlewares/notFound.middleware.js";
 import { errorHandler } from "./middlewares/errorHandler.middleware.js";
+import { router } from "./routes/index.js";
 
 /** _____ .env configuration _____ */
 dotenv.config();
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 });
 
 /** _____ Routes _____ */
+app.use("/api/v1", router);
 
 /** _____ Error Handling Middlewares _____ */
 app.use(notFoundHandler);
