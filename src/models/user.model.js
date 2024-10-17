@@ -15,11 +15,16 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
+
+    emailVarification: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true, collection: "Users" }
 );
 
-/** _____ Generate hash password when data is just saved _____ */
+/** _____ Hash Password _____ */
 userSchema.pre("save", async function (next) {
   try {
     if (!this.isModified("password")) {

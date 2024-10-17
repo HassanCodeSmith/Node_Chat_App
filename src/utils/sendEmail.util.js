@@ -1,6 +1,6 @@
 import { createTransport } from "nodemailer";
 
-const sendMail = async ({ to, subject, text }) => {
+const sendMail = async ({ to, subject, html }) => {
   const transporter = createTransport({
     service: "gmail",
     auth: {
@@ -14,7 +14,7 @@ const sendMail = async ({ to, subject, text }) => {
     from: `"Smartfun Studios"<${process.env.NODE_MAILER_EMAIL}>`,
     to,
     subject,
-    text,
+    html,
   };
 
   // Send the email
